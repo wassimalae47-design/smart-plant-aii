@@ -1,81 +1,53 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#176b45">
-  <meta name="description" content="Smart Plant AI — مساعد عربي للتعرّف على النباتات الجزائرية والطبية والعطرية والصحراوية.">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="icon" href="icon-192.png">
-  <title>Smart Plant AI | دليل النباتات الذكي</title>
-  <style>
-    :root{--green:#176b45;--green2:#e8f4ec;--ink:#173329;--muted:#60756a;--line:#dce9df;--paper:#f6faf7;--white:#fff;--warn:#fff4df}
-    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif}
-    .top{background:linear-gradient(135deg,#145b3c,#258557);color:white;padding:25px 18px 34px;border-radius:0 0 26px 26px}
-    .brand{display:flex;align-items:center;gap:12px;max-width:760px;margin:auto}.logo{width:48px;height:48px;border-radius:16px;background:#ffffff22;display:grid;place-items:center;font-size:27px}
-    h1{font-size:21px;margin:0}.tag{font-size:12px;opacity:.9;margin-top:4px}.hero{max-width:760px;margin:22px auto 0}.hero h2{font-size:25px;margin:0 0 7px}.hero p{margin:0;line-height:1.7;color:#e4f4e9;font-size:14px}
-    main{max-width:760px;margin:-15px auto 40px;padding:0 14px}.card{background:var(--white);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:0 7px 24px #153d2510}
-    .card h3{margin:0 0 8px;font-size:17px}.sub{color:var(--muted);font-size:13px;line-height:1.7;margin:0 0 14px}
-    .actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pick{border:0;border-radius:14px;padding:14px 10px;background:var(--green);color:white;font-weight:700;font-size:14px;cursor:pointer}.pick.secondary{background:var(--green2);color:var(--green);border:1px solid #c9e2d1}
-    input[type=file]{display:none}.preview-wrap{display:none;margin-top:14px}.preview{width:100%;max-height:340px;object-fit:contain;border-radius:14px;background:#f0f4f1}.file-name{font-size:12px;color:var(--muted);margin:8px 0}.identify{width:100%;border:0;border-radius:13px;padding:14px;background:#a9b8ae;color:white;font-weight:700;font-size:15px}.identify:disabled{cursor:not-allowed}
-    .notice{background:var(--warn);border:1px solid #f0dfbd;border-radius:15px;padding:13px;font-size:12px;line-height:1.8;color:#70521d}.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.tile{background:#f2f8f3;border:1px solid var(--line);border-radius:14px;padding:13px}.tile b{display:block;font-size:13px;margin-bottom:4px}.tile span{font-size:12px;color:var(--muted);line-height:1.6}.footer{text-align:center;color:var(--muted);font-size:11px;padding:8px 20px 24px}
-    @media(min-width:600px){.top{padding-top:32px}.hero h2{font-size:30px}.card{padding:22px}}
-  </style>
-</head>
-<body>
-  <header class="top">
-    <div class="brand"><div class="logo" aria-hidden="true">🌿</div><div><h1>Smart Plant AI</h1><div class="tag">دليل النباتات الذكي</div></div></div>
-    <div class="hero"><h2>اكتشف عالم النباتات من حولك</h2><p>صوّر النبتة أو اختر صورة من هاتفك، واستعد للتعرّف على النباتات الجزائرية والطبية والعطرية والصحراوية.</p></div>
-  </header>
-  <main>
-    <section class="card">
-      <h3>📷 تعرّف على نبتة</h3>
-      <p class="sub">التقط صورة واضحة للأوراق أو الأزهار أو الثمار. حاول تصوير أكثر من جزء إن أمكن.</p>
-      <div class="actions">
-        <label class="pick" for="cameraInput">فتح الكاميرا</label>
-        <label class="pick secondary" for="galleryInput">اختيار من المعرض</label>
-      </div>
-      <input id="cameraInput" type="file" accept="image/*" capture="environment">
-      <input id="galleryInput" type="file" accept="image/*">
-      <div class="preview-wrap" id="previewWrap">
-        <img id="preview" class="preview" alt="معاينة صورة النبتة">
-        <div class="file-name" id="fileName"></div>
-        <button class="identify" id="identifyBtn" disabled>التعرّف بالذكاء الاصطناعي — غير مفعّل بعد</button>
-      </div>
-    </section>
-    <section class="card">
-      <h3>ماذا ستجد في بطاقة النبتة؟</h3>
-      <div class="grid">
-        <div class="tile"><b>🌱 الهوية النباتية</b><span>الاسم العربي والمحلي، الاسم العلمي، والعائلة النباتية.</span></div>
-        <div class="tile"><b>🧪 الفوائد</b><span>تمييز الاستخدامات التقليدية عما تدعمه الدراسات العلمية.</span></div>
-        <div class="tile"><b>⚠️ السلامة</b><span>السمية والأضرار وموانع الاستعمال والتداخلات المحتملة.</span></div>
-        <div class="tile"><b>🏜️ نباتات الجزائر</b><span>اهتمام خاص بالنباتات المحلية والصحراوية.</span></div>
-      </div>
-    </section>
-    <div class="notice"><b>تنبيه صحي مهم:</b> هذه النسخة واجهة أولية ولا تتعرف على النباتات بعد؛ خدمة الذكاء الاصطناعي لم تُربط. وحتى بعد الربط، يبقى التعرف بالصورة احتماليًا وقد يخطئ، ولا يثبت أن النبتة صالحة للأكل أو العلاج. لا تتناول نباتًا مجهولًا اعتمادًا على التطبيق.</div>
-  </main>
-  <div class="footer">Smart Plant AI · نسخة أولية قيد التطوير</div>
-  <script>
-    const cameraInput=document.getElementById('cameraInput');
-    const galleryInput=document.getElementById('galleryInput');
-    const previewWrap=document.getElementById('previewWrap');
-    const preview=document.getElementById('preview');
-    const fileName=document.getElementById('fileName');
-    let currentUrl=null;
-    function showImage(file){
-      if(!file)return;
-      if(!file.type.startsWith('image/')){alert('يرجى اختيار ملف صورة.');return;}
-      if(currentUrl)URL.revokeObjectURL(currentUrl);
-      currentUrl=URL.createObjectURL(file);
-      preview.src=currentUrl;
-      fileName.textContent='الصورة المختارة: '+file.name;
-      previewWrap.style.display='block';
-    }
-    cameraInput.addEventListener('change',e=>showImage(e.target.files[0]));
-    galleryInput.addEventListener('change',e=>showImage(e.target.files[0]));
-    if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-      window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
-    }
-  </script>
-</body>
-</html>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#176b45"><link rel="manifest" href="manifest.webmanifest">
+<title>Smart Plant AI | النباتات الذكية</title>
+<style>
+:root{font-family:system-ui,Tahoma,Arial;color:#183328;background:#f3f8f3}*{box-sizing:border-box}
+body{margin:0}.wrap{max-width:760px;margin:auto;padding:18px}
+header{background:#176b45;color:white;padding:24px 18px;border-radius:18px;margin:12px 0 18px}
+h1{margin:0 0 8px;font-size:25px}header p{margin:0;line-height:1.7}
+.card{background:white;border:1px solid #dce9df;border-radius:16px;padding:18px;margin:14px 0;box-shadow:0 3px 14px #173b2510}
+label{display:block;font-weight:700;margin-bottom:8px}input[type=url],input[type=file]{width:100%;padding:12px;border:1px solid #cbd9ce;border-radius:10px;background:white}
+button{background:#176b45;color:white;border:0;border-radius:11px;padding:13px 18px;font-weight:700;font-size:16px;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+#preview{max-width:100%;max-height:320px;display:none;margin:14px auto 0;border-radius:12px}
+#status{white-space:pre-wrap;line-height:1.7;margin-top:12px}.field{padding:10px 0;border-bottom:1px solid #e8eee9}.field b{display:block;color:#176b45;margin-bottom:4px}
+.warn{background:#fff7e7;border-right:4px solid #d99b24;padding:12px;border-radius:9px;line-height:1.7}
+small{color:#607568}
+</style></head>
+<body><main class="wrap">
+<header><h1>🌿 Smart Plant AI</h1><p>التعرّف المبدئي على النباتات الجزائرية والطبية والعطرية والصحراوية من الصور.</p></header>
+<section class="card">
+<label for="worker">رابط خدمة التعرف (Cloudflare Worker)</label>
+<input id="worker" type="url" placeholder="https://اسم-الخدمة.اسمك.workers.dev">
+<small>أدخل رابط Worker المنشور فقط. لا تضع مفتاح Gemini هنا.</small>
+</section>
+<section class="card">
+<label for="photo">اختر صورة نبات أو التقط صورة بالكاميرا</label>
+<input id="photo" type="file" accept="image/*" capture="environment">
+<img id="preview" alt="معاينة صورة النبات">
+<div class="actions"><button id="identify" disabled>تعرّف على النبات</button><button id="clear" type="button">مسح الصورة</button></div>
+<div id="status" role="status"></div>
+</section>
+<section id="result" class="card" hidden><h2>نتيجة التحليل</h2><div id="fields"></div></section>
+<p class="warn">تنبيه مهم: التعرف بالذكاء الاصطناعي احتمالي وقد يخطئ. لا تأكل أي نبات ولا تستخدمه للعلاج اعتماداً على الصورة وحدها. الاستخدامات التقليدية ليست دليلاً علمياً على الفعالية أو السلامة.</p>
+</main>
+<script>
+const photo=document.querySelector('#photo'),preview=document.querySelector('#preview'),identify=document.querySelector('#identify'),status=document.querySelector('#status'),result=document.querySelector('#result'),fields=document.querySelector('#fields');
+let selected=null;
+photo.addEventListener('change',()=>{selected=photo.files?.[0]||null;identify.disabled=!selected;result.hidden=true;status.textContent='';if(selected){preview.src=URL.createObjectURL(selected);preview.style.display='block'}else{preview.style.display='none'}});
+document.querySelector('#clear').onclick=()=>{photo.value='';selected=null;identify.disabled=true;preview.style.display='none';result.hidden=true;status.textContent=''};
+identify.onclick=async()=>{const endpoint=document.querySelector('#worker').value.trim();if(!endpoint){status.textContent='أدخل رابط خدمة التعرف أولاً.';return}if(!selected)return;
+identify.disabled=true;status.textContent='جارٍ تحليل الصورة… قد يستغرق ذلك بعض الوقت.';
+try{const dataUrl=await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=reject;r.readAsDataURL(selected)});
+const res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({image:dataUrl.split(',')[1],mimeType:selected.type||'image/jpeg'})});
+const payload=await res.json();if(!res.ok)throw new Error(payload.error||'تعذر تحليل الصورة');
+const p=payload.result||payload;const labels=[['الاسم العربي','arabic_name'],['الاسم المحلي في الجزائر','algerian_local_name'],['الاسم العلمي','scientific_name'],['الفصيلة النباتية','family'],['الاستخدامات التقليدية','traditional_uses'],['الاستخدامات المدعومة علمياً','scientific_uses'],['الأضرار والسمية','toxicity_and_harms'],['موانع الاستعمال','contraindications'],['التداخلات المحتملة','interactions'],['درجة الثقة','confidence']];
+fields.innerHTML='';for(const [label,key] of labels){const value=p[key];if(value){const div=document.createElement('div');div.className='field';const b=document.createElement('b');b.textContent=label;const span=document.createElement('span');span.textContent=Array.isArray(value)?value.join('، '):String(value);div.append(b,span);fields.append(div)}}
+result.hidden=false;status.textContent='اكتمل التحليل. راجع التنبيه ولا تعتمد على النتيجة وحدها.';
+}catch(e){status.textContent='حدث خطأ: '+e.message+'\nتحقق من رابط Worker واتصال الإنترنت.'}finally{identify.disabled=!selected}};
+if('serviceWorker'in navigator)window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script></body></html>
